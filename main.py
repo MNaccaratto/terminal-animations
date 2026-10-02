@@ -23,17 +23,42 @@ def bounce():
     bouncestr = "•"
 
     while True:
-        height = input("How high do you want the ball to bounce [10-50]? ")
+        try:
+            height = int(input("How high do you want the ball to bounce [10-50]? "))
+            if height < 10 or height > 50:
+                print("Please select a height within the range [10-50] inclusive")
+                continue
+
+            peak = height
+            i = 5
+            while i > 0:
+                while peak > 0:
+                    print(f"\x1b[2K{bouncestr}", end="\r", flush=True)
+                    peak -= 1
+                    time.sleep(0.01)
+                    bouncestr = " " + bouncestr
+                while peak < height:
+                    print(f"\x1b[2K{bouncestr}", end="\r", flush=True)
+                    peak += 1
+                    time.sleep(0.01)
+                    bouncestr = bouncestr[1:]
+                i -= 1
+
+            break
+        except ValueError:
+            print("Please input a integer value")
+            continue
 
 
 if __name__ == "__main__":
 
-    valid_ani = ["bounce", "dot"]
+    valid_ani = ["bounce", "dot", "quit"]
     print("_____Welcome to Maxwell's Terminal Animations_____")
 
     while True:
         print("* You have the following options:")
         print("*      Dot")
+        print("*      Bounce")
         print("*      Quit Animation [enter quit]")
         user = str(input("\nPlease give me the animation you'd like to see: ")).lower()
 
