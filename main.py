@@ -12,15 +12,23 @@ def dot():
     dotstr = "•"
 
     i = 0
-    while i <= 20:
+    while i <= 10:
         print(f"{dotstr}", end="\r", flush=True)
         i += 1
-        time.sleep(0.5)
+        time.sleep(0.25)
         dotstr = " " + dotstr
+
+
+def bounce():
+    bouncestr = "•"
+
+    while True:
+        height = input("How high do you want the ball to bounce [10-50]? ")
 
 
 if __name__ == "__main__":
 
+    valid_ani = ["bounce", "dot"]
     print("_____Welcome to Maxwell's Terminal Animations_____")
 
     while True:
@@ -29,10 +37,16 @@ if __name__ == "__main__":
         print("*      Quit Animation [enter quit]")
         user = str(input("\nPlease give me the animation you'd like to see: ")).lower()
 
+        if user not in valid_ani:
+            print(f"{user} is not a valid animation")
+            continue
+
         print(f"You selected {user}")
         match user:
             case "dot":
                 dot()
+            case "bounce":
+                bounce()
             case "quit":
                 break
 
