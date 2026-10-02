@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     i = 0
     while i <= 10:
-        print(dotstr)
+        print(f"{dotstr}", end="\r", flush=True)
         i += 1
         time.sleep(0.5)
         dotstr = " " + dotstr
