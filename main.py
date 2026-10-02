@@ -33,7 +33,8 @@ if __name__ == "__main__":
         match user:
             case "dot":
                 dot()
-            case "quit"
+            case "quit":
+                break
 
         time.sleep(0.1)
         more = str(input("Would you like to see another animation? [y/n] ")).lower()
